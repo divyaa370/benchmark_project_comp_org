@@ -35,3 +35,14 @@ def main():
 
         end = time.time()
         total_time += end - start
+
+    # Print benchmarking data in different colors
+    print(ANSI_COLOR_YELLOW + "Benchmark 4:" + ANSI_COLOR_RESET)
+    print(ANSI_COLOR_GREEN + "Hard Drive benchmark 1" + ANSI_COLOR_RESET)
+    print(ANSI_COLOR_RED + f"Which includes reading from, and writing to file, 100 bytes each time is: {total_time} seconds" + ANSI_COLOR_RESET)
+
+    # Delete the file after benchmarking
+    os.remove("dummyOneBillionBytes.txt")
+
+if __name__ == "__main__":
+    main()

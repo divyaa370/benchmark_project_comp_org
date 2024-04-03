@@ -23,3 +23,20 @@ def main():
             bytes_written_so_far += one_time_size
         end = time.time()
         total_time = end - start
+
+    # Read a whole file of 10^9 bytes, 10000 bytes each time
+    with open("dummyOneBillionBytes.txt", "rb") as input_file_handler:
+        start = time.time()
+        input_buffer = bytearray(one_time_size)
+
+        while input_file_handler.readinto(input_buffer) == one_time_size:
+            pass
+
+        end = time.time()
+        total_time += end - start
+    # Print benchmarking data in different colors
+    print(ANSI_COLOR_YELLOW + "Benchmark 5:" + ANSI_COLOR_RESET)
+    print(ANSI_COLOR_GREEN + "Hard Drive benchmark 2" + ANSI_COLOR_RESET)
+    print(ANSI_COLOR_RED + f"Which includes reading from, and writing to file, 10000 bytes each time is: {total_time} seconds" + ANSI_COLOR_RESET)
+
+    # Delete the file after benchmarking
